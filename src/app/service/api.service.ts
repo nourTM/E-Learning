@@ -15,8 +15,9 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // Create
-  createEmployee(data): Observable<any> {
+  createCourse(data): Observable<any> {
     let url = `${this.baseUri}/create`;
+    console.log(data);
     return this.http.post(url, data)
       .pipe(
         catchError(this.errorMgmt)
@@ -24,35 +25,35 @@ export class ApiService {
   }
 
   // Get all employees
-  getEmployees() {
+  getCourses() {
     return this.http.get(`${this.baseUri}`);
   }
 
   // Get employee
-  getEmployee(id): Observable<any> {
+  getCourse(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
       map((res: Response) => {
-        return res || {}
+        return res || {};
       }),
       catchError(this.errorMgmt)
-    )
+    );
   }
 
   // Update employee
-  updateEmployee(id, data): Observable<any> {
+  updateCourse(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
     return this.http.put(url, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
-    )
+    );
   }
 
-  // Delete employee
-  deleteEmployee(id): Observable<any> {
+  // Delete Course
+  deleteCourse(id): Observable<any> {
     let url = `${this.baseUri}/delete/${id}`;
     return this.http.delete(url, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
-    )
+    );
   }
 
   // Error handling

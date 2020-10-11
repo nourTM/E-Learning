@@ -10,8 +10,7 @@ import {ApiService} from '../../service/api.service';
 })
 export class CourseCreateComponent implements OnInit {
   submitted = false;
-  employeeForm: FormGroup;
-  EmployeeProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin'];
+  courseForm: FormGroup;
 
   constructor(
     public fb: FormBuilder,
@@ -22,44 +21,34 @@ export class CourseCreateComponent implements OnInit {
     this.mainForm();
   }
 
-  ngOnInit() { }
+  ngOnInit(): void { }
 
-  mainForm() {
-    this.employeeForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      designation: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
-    })
-  }
-
-  // Choose designation with select dropdown
-  updateProfile(e){
-    this.employeeForm.get('designation').setValue(e, {
-      onlySelf: true
+  mainForm(): void{
+    this.courseForm = this.fb.group({
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      sharingDate: ['', [Validators.required]],
+      pieces: ['', [Validators.required]]
     });
   }
 
   // Getter to access form control
   get myForm(){
-    return this.employeeForm.controls;
+    return this.courseForm.controls;
   }
-
-  onSubmit() {
+  onSubmit(): boolean{
     this.submitted = true;
-    if (!this.employeeForm.valid) {
+    if (!this.courseForm.valid) {
       return false;
     } else {
-      this.apiService.createEmployee(this.employeeForm.value).subscribe(
+      // console.log(this.courseForm.value);
+      this.apiService.createCourse(this.courseForm.value).subscribe(
         (res) => {
-          console.log('Employee successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/employees-list'))
+          console.log('Course successfully created!');
+          this.ngZone.run(() => this.router.navigateByUrl('/courses-list'));
         }, (error) => {
           console.log(error);
         });
     }
   }
-
-}
-
 }

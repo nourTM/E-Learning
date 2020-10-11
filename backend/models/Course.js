@@ -13,7 +13,7 @@ let Course = new Schema({
       type: String
    },
    sharingDate: {
-      type: Number
+      type: String
    }
 }, {
    collection: 'Courses'

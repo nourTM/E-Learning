@@ -7,7 +7,7 @@ let Course = require('../models/Course');
 
 // Add Course
 courseRoute.route('/create').post((req, res, next) => {
-  Course.create(req.query, (error, data) => {
+  Course.create(req.body, (error, data) => {
     if (error) {
       return next(error)
     } else {

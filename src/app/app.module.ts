@@ -8,6 +8,7 @@ import { CourseEditComponent } from './components/course-edit/course-edit.compon
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ApiService } from './service/api.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

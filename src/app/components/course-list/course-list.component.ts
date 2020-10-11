@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from '../../service/api.service';
 
 @Component({
   selector: 'app-course-list',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseListComponent implements OnInit {
 
-  constructor() { }
+  Course: any = [];
 
-  ngOnInit(): void {
+  constructor(private apiService: ApiService) {
+    this.readCourse();
+  }
+
+  ngOnInit(): void {}
+
+  readCourse(): void{
+    this.apiService.getCourses().subscribe((data) => {
+      this.Course = data;
+    });
+  }
+
+  removeCourse(employee, index): void {
+    if (window.confirm('Are you sure?')) {
+      this.apiService.deleteCourse(employee._id).subscribe((data) => {
+          this.Course.splice(index, 1);
+        }
+      );
+    }
   }
 
 }
