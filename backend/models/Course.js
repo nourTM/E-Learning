@@ -9,9 +9,6 @@ let Course = new Schema({
    description: {
       type: String
    },
-   pieces: {
-      type: String
-   },
    sharingDate: {
       type: String
    }

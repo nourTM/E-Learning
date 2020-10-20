@@ -22,9 +22,9 @@ export class CourseListComponent implements OnInit {
     });
   }
 
-  removeCourse(employee, index): void {
+  removeCourse(course, index): void {
     if (window.confirm('Are you sure?')) {
-      this.apiService.deleteCourse(employee._id).subscribe((data) => {
+      this.apiService.deleteCourse(course._id).subscribe((data) => {
           this.Course.splice(index, 1);
         }
       );

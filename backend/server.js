@@ -1,5 +1,5 @@
 let express = require('express'),
-   path = require('path'),
+  path = require('path'),
    mongoose = require('mongoose'),
    cors = require('cors'),
    bodyParser = require('body-parser'),
@@ -24,10 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
    extended: false
 }));
+// Make files "Uploads" Folder Publicly Available
+app.use('/public', express.static('public'));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/miniprojet')));
 app.use('/', express.static(path.join(__dirname, 'dist/miniprojet')));
-app.use('/api', courseRoute)
+app.use('/api', courseRoute )
 
 // Create port
 const port = process.env.PORT || 4000;

@@ -14,29 +14,12 @@
 
         <div class="form-group">
           <label for="inputDesc">Description</label>
-          <input id="inputDesc" class="form-control" type="text" formControlName="description">
+          <textarea maxlength="50" id="inputDesc" class="form-control" type="text" formControlName="description">
+            Enter text here...
+          </textarea>
           <!-- error -->
           <div class="invalid-feedback" *ngIf="submitted && myForm.description.errors?.required">
             Please Enter the Description.
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="inputSharingDate">SharingDate</label>
-          <input id="inputSharingDate" type="text" class="form-control"
-                  formControlName="sharingDate">
-          <!-- error -->
-          <div class="invalid-feedback" *ngIf="submitted && myForm.sharingDate.errors?.required">
-            Enter a Sharing Date
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="inputPieces">Pieces No</label>
-          <input id="inputPieces" class="form-control" type="text" formControlName="pieces">
-          <!-- error -->
-          <div class="invalid-feedback" *ngIf="submitted && myForm.pieces.errors?.required">
-            Enter your pieces number.
           </div>
         </div>
 

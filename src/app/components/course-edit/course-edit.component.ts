@@ -31,8 +31,7 @@ export class CourseEditComponent implements OnInit {
     this.editForm = this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      sharingDate: ['', [Validators.required]],
-      pieces: ['', [Validators.required]]
+      sharingDate: ['', [Validators.required]]
     });
   }
 
@@ -46,8 +45,7 @@ export class CourseEditComponent implements OnInit {
       this.editForm.setValue({
         title: data.title,
         description: data.description,
-        sharingDate: data.sharingDate,
-        pieces: data.pieces,
+        sharingDate: data.sharingDate
       });
     });
   }
@@ -56,8 +54,7 @@ export class CourseEditComponent implements OnInit {
     this.editForm = this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      sharingDate: ['', [Validators.required]],
-      pieces: ['', [Validators.required]]
+      sharingDate: ['', [Validators.required]]
     });
   }
 
